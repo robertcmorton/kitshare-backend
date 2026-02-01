@@ -1,0 +1,27 @@
+[15-Jul-2018 15:51:29 Europe/London] PHP Parse error:  syntax error, unexpected 'a' (T_STRING), expecting ']' in /home/infer9yo/public_html/kitshare/admin/application/controllers/Gear_categories.php on line 432
+[19-Jul-2018 11:10:59 Europe/London] PHP Parse error:  syntax error, unexpected '}' in /home/infer9yo/public_html/kitshare/admin/application/views/common/left-menu.php on line 58
+[27-Jul-2018 11:12:33 Europe/London] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/admin/application/views/gear_categories/ajax.php on line 8
+[27-Jul-2018 11:27:30 Europe/London] PHP Fatal error:  Cannot use isset() on the result of a function call (you can use "null !== func()" instead) in /home/infer9yo/public_html/kitshare/admin/application/controllers/Feature_master.php on line 251
+[27-Jul-2018 11:28:32 Europe/London] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/infer9yo/public_html/kitshare/admin/application/controllers/Feature_master.php on line 251
+[27-Jul-2018 13:10:16 Europe/London] PHP Parse error:  syntax error, unexpected ')', expecting '(' in /home/infer9yo/public_html/kitshare/admin/application/views/app_users/add.php on line 192
+[27-Jul-2018 14:52:55 Europe/London] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/infer9yo/public_html/kitshare/admin/application/views/app_users/edit.php on line 226
+[01-Aug-2018 07:24:11 Europe/London] PHP Parse error:  syntax error, unexpected '=', expecting ',' or ';' in /home/infer9yo/public_html/kitshare/admin/application/controllers/Gear_categories.php on line 176
+[01-Aug-2018 07:24:13 Europe/London] PHP Parse error:  syntax error, unexpected '=', expecting ',' or ';' in /home/infer9yo/public_html/kitshare/admin/application/controllers/Gear_categories.php on line 176
+[01-Aug-2018 09:38:49 Europe/London] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/admin/application/controllers/App_users.php on line 839
+[06-Aug-2018 08:05:51 Europe/London] PHP Parse error:  syntax error, unexpected ')' in /home/infer9yo/public_html/kitshare/admin/application/controllers/App_users.php on line 810
+[10-Sep-2018 14:13:18 Europe/London] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/infer9yo/public_html/kitshare/admin/application/controllers/Gear_desc.php on line 972
+[11-Sep-2018 10:08:53 Europe/London] PHP Parse error:  syntax error, unexpected '$date_array' (T_VARIABLE) in /home/infer9yo/public_html/kitshare/admin/application/controllers/Gear_desc.php on line 194
+[11-Sep-2018 10:46:09 Europe/London] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home/infer9yo/public_html/kitshare/admin/application/controllers/Gear_desc.php on line 349
+[11-Sep-2018 11:11:49 Europe/London] PHP Parse error:  syntax error, unexpected ')', expecting '(' in /home/infer9yo/public_html/kitshare/admin/application/views/device/edit.php on line 290
+[17-Sep-2018 10:32:43 Europe/London] PHP Parse error:  syntax error, unexpected ''gear_desc/deleteUnacailable/'' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/infer9yo/public_html/kitshare/admin/application/views/device/edit.php on line 252
+[17-Sep-2018 10:32:44 Europe/London] PHP Parse error:  syntax error, unexpected ''gear_desc/deleteUnacailable/'' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/infer9yo/public_html/kitshare/admin/application/views/device/edit.php on line 252
+[17-Sep-2018 10:33:05 Europe/London] PHP Parse error:  syntax error, unexpected ''gear_desc/deleteUnacailable/'' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/infer9yo/public_html/kitshare/admin/application/views/device/edit.php on line 252
+[17-Sep-2018 10:33:06 Europe/London] PHP Parse error:  syntax error, unexpected ''gear_desc/deleteUnacailable/'' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/infer9yo/public_html/kitshare/admin/application/views/device/edit.php on line 252
+[17-Sep-2018 10:55:00 Europe/London] PHP Parse error:  syntax error, unexpected '$row' (T_VARIABLE) in /home/infer9yo/public_html/kitshare/admin/application/views/device/list.php on line 143
+[17-Sep-2018 10:55:01 Europe/London] PHP Parse error:  syntax error, unexpected '$row' (T_VARIABLE) in /home/infer9yo/public_html/kitshare/admin/application/views/device/list.php on line 143
+[17-Sep-2018 10:55:02 Europe/London] PHP Parse error:  syntax error, unexpected '$row' (T_VARIABLE) in /home/infer9yo/public_html/kitshare/admin/application/views/device/list.php on line 143
+[17-Sep-2018 13:22:35 Europe/London] PHP Parse error:  syntax error, unexpected '}' in /home/infer9yo/public_html/kitshare/admin/application/views/device/list.php on line 91
+[17-Sep-2018 13:22:36 Europe/London] PHP Parse error:  syntax error, unexpected '}' in /home/infer9yo/public_html/kitshare/admin/application/views/device/list.php on line 91
+[24-Sep-2018 08:33:41 Europe/London] PHP Parse error:  syntax error, unexpected 'die' (T_EXIT), expecting function (T_FUNCTION) in /home/infer9yo/public_html/kitshare/admin/application/controllers/App_users.php on line 352
+[26-Sep-2018 12:31:18 Europe/London] PHP Parse error:  syntax error, unexpected '?>', expecting function (T_FUNCTION) in /home/infer9yo/public_html/kitshare/admin/application/controllers/Gear_desc.php on line 1223
+[27-Sep-2018 14:44:33 Europe/London] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/infer9yo/public_html/kitshare/admin/application/controllers/Models.php on line 475

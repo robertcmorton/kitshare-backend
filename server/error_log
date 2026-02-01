@@ -1,0 +1,141 @@
+[22-Jun-2018 19:28:51 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Login.php on line 14
+[23-Jun-2018 02:08:23 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Login.php on line 14
+[23-Jun-2018 02:10:02 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Login.php on line 14
+[23-Jun-2018 02:11:24 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Login.php on line 14
+[23-Jun-2018 02:11:32 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Login.php on line 14
+[23-Jun-2018 02:13:01 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Login.php on line 14
+[23-Jun-2018 02:14:23 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Login.php on line 14
+[23-Jun-2018 02:14:35 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Login.php on line 14
+[23-Jun-2018 02:15:00 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Login.php on line 14
+[23-Jun-2018 02:18:28 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Login.php on line 16
+[23-Jun-2018 02:19:46 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Login.php on line 20
+[24-Jun-2018 06:45:57 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Socialmedia_login.php on line 15
+[24-Jun-2018 06:47:30 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Socialmedia_login.php on line 15
+[24-Jun-2018 06:47:58 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Socialmedia_login.php on line 15
+[24-Jun-2018 06:51:21 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Socialmedia_login.php on line 94
+[24-Jun-2018 06:55:37 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Socialmedia_login.php on line 15
+[24-Jun-2018 06:55:37 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Socialmedia_login.php on line 15
+[24-Jun-2018 06:55:37 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Socialmedia_login.php on line 15
+[24-Jun-2018 06:56:07 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Socialmedia_login.php on line 15
+[24-Jun-2018 06:56:07 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Socialmedia_login.php on line 15
+[24-Jun-2018 06:56:07 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Socialmedia_login.php on line 15
+[24-Jun-2018 06:56:07 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Socialmedia_login.php on line 15
+[30-Jun-2018 10:21:35 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Forget_password.php on line 19
+[07-Jul-2018 07:33:21 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 109
+[07-Jul-2018 07:34:05 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 109
+[07-Jul-2018 07:34:37 UTC] PHP Fatal error:  Function name must be a string in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 81
+[14-Jul-2018 15:29:41 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 109
+[14-Jul-2018 15:30:13 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 109
+[14-Jul-2018 15:32:08 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 109
+[14-Jul-2018 15:32:48 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 109
+[14-Jul-2018 15:32:48 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 109
+[14-Jul-2018 15:36:56 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 109
+[14-Jul-2018 15:38:47 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 109
+[15-Jul-2018 10:39:26 UTC] PHP Fatal error:  Call to undefined method Common_model::GetSpecificValues() in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 230
+[15-Jul-2018 10:45:23 UTC] PHP Fatal error:  Call to a member function num_rows() on array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/User_info.php on line 60
+[18-Jul-2018 17:05:11 UTC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Profile.php on line 37
+[18-Jul-2018 17:05:52 UTC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Profile.php on line 37
+[18-Jul-2018 17:07:14 UTC] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::UpdateRecord() in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Profile.php on line 35
+[18-Jul-2018 17:09:21 UTC] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::UpdateRecord() in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Profile.php on line 43
+[18-Jul-2018 17:10:21 UTC] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::UpdateRecord() in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Profile.php on line 43
+[18-Jul-2018 17:11:16 UTC] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::UpdateRecord() in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Profile.php on line 43
+[18-Jul-2018 17:12:18 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE), expecting function (T_FUNCTION) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Profile.php on line 51
+[22-Jul-2018 05:57:37 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Pre_fill.php on line 28
+[30-Jul-2018 11:13:13 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 89
+[30-Jul-2018 11:13:16 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 89
+[30-Jul-2018 11:27:43 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 91
+[30-Jul-2018 11:28:35 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 91
+[30-Jul-2018 11:28:39 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 91
+[30-Jul-2018 11:29:06 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 89
+[30-Jul-2018 11:29:09 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 89
+[30-Jul-2018 11:29:25 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 91
+[30-Jul-2018 11:29:27 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 91
+[30-Jul-2018 11:29:29 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 91
+[30-Jul-2018 11:29:30 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 91
+[30-Jul-2018 11:29:55 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 89
+[30-Jul-2018 11:29:58 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 89
+[30-Jul-2018 11:30:31 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 91
+[30-Jul-2018 11:30:48 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 91
+[11-Aug-2018 05:12:42 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 42
+[11-Aug-2018 06:03:50 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 42
+[11-Aug-2018 06:03:55 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 42
+[11-Aug-2018 06:09:13 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 42
+[11-Aug-2018 06:10:25 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 42
+[11-Aug-2018 06:12:50 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 42
+[11-Aug-2018 06:12:54 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 42
+[11-Aug-2018 06:12:56 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 42
+[11-Aug-2018 06:13:16 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 42
+[11-Aug-2018 06:28:09 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 209
+[11-Aug-2018 06:28:12 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 209
+[11-Aug-2018 06:33:47 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 202
+[11-Aug-2018 06:33:52 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 202
+[19-Aug-2018 06:27:20 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE), expecting function (T_FUNCTION) in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 416
+[22-Aug-2018 06:47:56 UTC] PHP Fatal error:  Call to a member function initialize() on null in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/ProfilepageDetails.php on line 435
+[23-Aug-2018 07:01:08 UTC] PHP Fatal error:  Call to a member function GetAllWhere() on null in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Gear_listing.php on line 157
+[23-Aug-2018 12:29:46 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Gear_listing.php on line 180
+[23-Aug-2018 12:29:49 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ingmigqn/public_html/projects/kitshare/server/application/controllers/Gear_listing.php on line 180
+[02-Sep-2018 07:36:47 Etc/GMT] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 116
+[03-Sep-2018 07:02:26 Etc/GMT] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 210
+[10-Sep-2018 06:26:58 Etc/GMT] PHP Parse error:  syntax error, unexpected ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 338
+[10-Sep-2018 07:54:36 Etc/GMT] PHP Fatal error:  Call to a member function addRecord() on null in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 468
+[10-Sep-2018 09:58:53 Etc/GMT] PHP Fatal error:  Call to a member function do_upload() on null in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 514
+[10-Sep-2018 16:28:22 Etc/GMT] PHP Parse error:  syntax error, unexpected 'die' (T_EXIT), expecting ',' or ';' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 581
+[11-Sep-2018 13:27:49 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 641
+[11-Sep-2018 13:37:19 Etc/GMT] PHP Parse error:  syntax error, unexpected '=' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 610
+[11-Sep-2018 13:37:38 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 620
+[08-Oct-2018 07:06:44 Etc/GMT] PHP Parse error:  syntax error, unexpected '"result"' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 75
+[08-Oct-2018 07:06:46 Etc/GMT] PHP Parse error:  syntax error, unexpected '"result"' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 75
+[08-Oct-2018 07:08:42 Etc/GMT] PHP Parse error:  syntax error, unexpected ''profile_detail'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 76
+[08-Oct-2018 07:08:42 Etc/GMT] PHP Parse error:  syntax error, unexpected ''profile_detail'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 76
+[08-Oct-2018 07:08:42 Etc/GMT] PHP Parse error:  syntax error, unexpected ''profile_detail'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 76
+[08-Oct-2018 07:08:55 Etc/GMT] PHP Parse error:  syntax error, unexpected ''profile_detail'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 76
+[08-Oct-2018 07:08:55 Etc/GMT] PHP Parse error:  syntax error, unexpected ''profile_detail'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 76
+[08-Oct-2018 07:08:55 Etc/GMT] PHP Parse error:  syntax error, unexpected ''profile_detail'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 76
+[08-Oct-2018 07:09:10 Etc/GMT] PHP Parse error:  syntax error, unexpected ''profile_detail'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 76
+[08-Oct-2018 10:23:25 Etc/GMT] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/infer9yo/public_html/kitshare/server/application/models/Home_model.php on line 156
+[08-Oct-2018 10:23:43 Etc/GMT] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/infer9yo/public_html/kitshare/server/application/models/Home_model.php on line 156
+[08-Oct-2018 10:23:46 Etc/GMT] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/infer9yo/public_html/kitshare/server/application/models/Home_model.php on line 156
+[08-Oct-2018 10:47:20 Etc/GMT] PHP Parse error:  syntax error, unexpected 'a' (T_STRING), expecting ']' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 103
+[09-Oct-2018 11:32:48 Etc/GMT] PHP Parse error:  syntax error, unexpected '.', expecting '{' in /home/infer9yo/public_html/kitshare/server/application/controllers/Hyperwallet.php on line 3
+[09-Oct-2018 12:01:46 Etc/GMT] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/server/application/controllers/Hyperwallet.php on line 64
+[09-Oct-2018 13:29:26 Etc/GMT] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/server/application/controllers/Hyperwallet.php on line 102
+[09-Oct-2018 13:29:29 Etc/GMT] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/server/application/controllers/Hyperwallet.php on line 102
+[12-Oct-2018 10:09:35 Etc/GMT] PHP Parse error:  syntax error, unexpected '/' in /home/infer9yo/public_html/kitshare/server/application/controllers/Hyperwallet.php on line 220
+[22-Oct-2018 07:03:35 Etc/GMT] PHP Fatal error:  Call to a member function getModelsList() on null in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 742
+[22-Oct-2018 07:29:19 Etc/GMT] PHP Fatal error:  Call to a member function getModelsList() on null in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 742
+[22-Oct-2018 07:30:24 Etc/GMT] PHP Fatal error:  Call to a member function initialize() on null in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 767
+[22-Oct-2018 08:21:40 Etc/GMT] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/infer9yo/public_html/kitshare/server/application/models/Home_model.php on line 445
+[22-Oct-2018 08:22:05 Etc/GMT] PHP Fatal error:  Call to a member function num_rows() on array in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 744
+[22-Oct-2018 08:24:53 Etc/GMT] PHP Fatal error:  Call to a member function num_rows() on array in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 744
+[22-Oct-2018 08:25:37 Etc/GMT] PHP Parse error:  syntax error, unexpected ';' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 745
+[22-Oct-2018 08:25:49 Etc/GMT] PHP Fatal error:  Call to a member function result() on array in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 744
+[22-Oct-2018 08:27:43 Etc/GMT] PHP Fatal error:  Call to a member function order_by() on null in /home/infer9yo/public_html/kitshare/server/application/models/Home_model.php on line 460
+[22-Oct-2018 11:07:56 Etc/GMT] PHP Fatal error:  Call to a member function result_array() on null in /home/infer9yo/public_html/kitshare/server/application/models/Home_model.php on line 469
+[23-Oct-2018 09:42:04 Etc/GMT] PHP Parse error:  syntax error, unexpected '$total' (T_VARIABLE) in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 754
+[23-Oct-2018 09:42:07 Etc/GMT] PHP Parse error:  syntax error, unexpected '$total' (T_VARIABLE) in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 754
+[23-Oct-2018 11:28:47 Etc/GMT] PHP Parse error:  syntax error, unexpected '$models_list' (T_VARIABLE), expecting ',' or ';' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 813
+[25-Oct-2018 07:18:10 Etc/GMT] PHP Parse error:  syntax error, unexpected '=' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 110
+[25-Oct-2018 07:18:16 Etc/GMT] PHP Parse error:  syntax error, unexpected '=' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 110
+[25-Oct-2018 07:18:22 Etc/GMT] PHP Parse error:  syntax error, unexpected '=' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 110
+[25-Oct-2018 07:18:24 Etc/GMT] PHP Parse error:  syntax error, unexpected '=' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 110
+[25-Oct-2018 07:18:25 Etc/GMT] PHP Parse error:  syntax error, unexpected '=' in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 110
+[25-Oct-2018 11:35:05 Etc/GMT] PHP Parse error:  syntax error, unexpected '$fav_list' (T_VARIABLE) in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 635
+[25-Oct-2018 11:35:24 Etc/GMT] PHP Fatal error:  Call to a member function result_array() on array in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 635
+[25-Oct-2018 12:20:45 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/infer9yo/public_html/kitshare/server/application/controllers/User_info.php on line 671
+[27-Oct-2018 08:58:25 Etc/GMT] PHP Parse error:  syntax error, unexpected 'curl_setopt_array' (T_STRING) in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 936
+[27-Oct-2018 09:19:46 Etc/GMT] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 963
+[27-Oct-2018 09:25:43 Etc/GMT] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 969
+[27-Oct-2018 09:26:27 Etc/GMT] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 963
+[27-Oct-2018 09:26:48 Etc/GMT] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 969
+[27-Oct-2018 09:34:44 Etc/GMT] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 967
+[27-Oct-2018 09:35:08 Etc/GMT] PHP Fatal error:  Cannot use object of type stdClass as array in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 972
+[27-Oct-2018 09:47:49 Etc/GMT] PHP Fatal error:  Call to undefined function is_key() in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 964
+[27-Oct-2018 09:47:51 Etc/GMT] PHP Fatal error:  Call to undefined function is_key() in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 964
+[29-Oct-2018 06:16:34 Etc/GMT] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 1023
+[29-Oct-2018 06:19:31 Etc/GMT] PHP Fatal error:  Call to undefined function getDateList() in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 1017
+[29-Oct-2018 07:31:50 Etc/GMT] PHP Fatal error:  Call to undefined method Gear_listing::GetAllWhere() in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 1033
+[29-Oct-2018 09:08:11 Etc/GMT] PHP Parse error:  syntax error, unexpected '"other_charges"' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 1106
+[29-Oct-2018 09:08:16 Etc/GMT] PHP Parse error:  syntax error, unexpected '"other_charges"' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 1106
+[29-Oct-2018 09:08:33 Etc/GMT] PHP Parse error:  syntax error, unexpected '"other_charges"' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 1106
+[29-Oct-2018 09:09:07 Etc/GMT] PHP Parse error:  syntax error, unexpected '"other_charges"' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 1106
+[29-Oct-2018 09:09:11 Etc/GMT] PHP Parse error:  syntax error, unexpected '$ks_rent_status_master_id' (T_VARIABLE) in /home/infer9yo/public_html/kitshare/server/application/controllers/Gear_listing.php on line 1113

@@ -1,0 +1,31 @@
+<section>
+	<h3>Statement <small>Your 10 most recent transactions</small></h3>
+
+		<div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+            <th width="30%">Name</th>
+            <th width="20%">Account type</th>
+            <th width="20%">Start date</th>
+            <th width="20%">End Date</th>
+            <th width="10%">Balance</th>
+
+            </tr>
+            </thead>
+            <tbody>
+                  <tr ng-repeat="ms in mystatement">
+                        <td>{{ms.name}}</td>
+                        <td>{{ms.plan_name}}</td>
+                        <td>{{ms.sub_start_date}}</td>
+                        <td>{{ms.sub_end_date}}</td>
+                        <td>{{ms.amount}}</td>
+                  </tr>
+                                      
+
+            </tbody>
+            </table>
+        </div>
+
+</section>
+        

@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h3 class="modal-title" align="left">Account Type Update</h3>
+</div>
+<div class="modal-body">
+   <!-- <img src="./public/lib/images/warning.png" height="30" width="30" align="left"/><h3>Please Login</h3> -->
+   <form stripe-form="stripeCallback" name="ac_update_form" id="ac_update_form">
+        <div class="contact_form">
+        
+          <div class="row">
+                        <div class="col-sm-12"> <input ng-model="user_name" placeholder="Holder's name"  class="form-control contact_inputtextbox" disabled/>
+                        </div>
+                         
+                          
+                      </div>
+            <div class="row">
+               <div class="col-sm-12"><input ng-model="user_email"  type="email" placeholder="Email" class="form-control contact_inputtextbox" disabled/></div>
+                
+            </div>
+
+        <!-- </div> -->
+        <!-- <div class="col-sm-12 contact_form_box"> -->
+          <div class="row">
+            <div class="col-sm-12"> <input ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" class="form-control contact_inputtextbox"/></div>
+              <div class="col-sm-6"><input ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" class="form-control contact_inputtextbox"/></div>
+              <div class="col-sm-6"><input ng-model="cvc" placeholder="CVC" payments-format="cvc" payments-validate="cvc" class="form-control contact_inputtextbox"/></div>
+          </div>
+
+                       
+          <!-- </div> -->
+                    
+        </div>	      
+       		<!-- <div class="col-sm-12 contact_form_box tbc">
+                    <button type="sub" class="btn btn-success">Go Gold</button>
+            </div> -->
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="save_ac()" id="ac_update">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()" id="ac_update_calcel">Cancel</button>
+</div>

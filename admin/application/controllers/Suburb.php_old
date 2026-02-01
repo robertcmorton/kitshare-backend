@@ -1,0 +1,362 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Suburb extends CI_Controller {
+	 public function __construct() {
+		parent::__construct();
+		$this->load->helper(array('url','form','html','text'));
+		$this->load->library(array('session','form_validation','pagination','email'));
+		$this->load->model(array('common_model','mail_model','model'));
+		if($this->session->userdata('ADMIN_ID') =='') {
+          redirect('login');
+		  }
+		 error_reporting(0);
+	}
+
+	protected $validation_rules = array
+        (
+		'Add' => array(
+			array(
+                'field' => 'suburb_name',
+                'label' => 'state name',
+                'rules' => 'trim|required'
+            ),
+			array(
+                'field' => 'gs_state_id',
+                'label' => 'country name',
+                'rules' => 'trim|required'
+            ),
+
+        ),
+
+    );
+
+	public function index()
+	{
+		$data=array();
+		//$where = ' ';
+		$limit=10;
+		$data['suburb_name']				= $this->input->get('suburb_name');
+		if($data['suburb_name'] != ''){
+			$where .= "a.suburb_name LIKE '%".trim($data['suburb_name'])."%' and ";
+		}
+		
+		$data['gs_state_name']				= $this->input->get('gs_state_name');
+				if($data['gs_state_name'] != ''){
+				$where .= "b.gs_state_name LIKE '%".trim($data['gs_state_name'])."%' and ";
+			}
+			
+		$where = substr($where, 0, -4);
+		
+		if($this->input->get("per_page")!= '')
+		{
+		$offset = $this->input->get("per_page");
+		}
+		else
+		{
+			$offset=0;
+		}
+		
+		$nUser=$this->model->suburb($where);
+		$sql=$this->model->suburb($where,$limit,$offset);
+		
+		$state=$sql->result();
+	
+		$total_rows=$nUser->num_rows();	
+		$data['state'] = $state;
+		$data['total_rows']=$total_rows;
+		$data['limit']=$limit;
+		$config['base_url'] = base_url()."suburb/index/?suburb_name=".$data['suburb_name']."";
+		$config['total_rows'] = $total_rows;
+		$config['per_page'] = $limit;
+		$config['page_query_string'] = TRUE;
+	    $config['full_tag_open'] = "<ul class='pagination pagination-sm text-center'>";
+		$config['full_tag_close'] = "</ul>";
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = "<li><li class='active'><a href='#'>";
+		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+		$config['next_tag_open'] = "<li>";
+		$config['next_tagl_close'] = "</li>";
+		$config['prev_tag_open'] = "<li>";
+		$config['prev_tagl_close'] = "</li>";
+		$config['first_tag_open'] = "<li>";
+		$config['first_tagl_close'] = "</li>";
+		$config['last_tag_open'] = "<li>";
+		$config['last_tagl_close'] = "</li>";
+		$this->pagination->initialize($config);
+		$paginator = $this->pagination->create_links();
+		
+		//echo $this->db->last_query();
+		//print_r($data['state']); exit();
+		
+		
+//////////////////////////////Pagination config//////////////////////////////////				
+		$data['paginator'] = $paginator;
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');	
+		$this->load->view('suburb/list', $data);
+		$this->load->view('common/footer');		
+
+	}
+
+	public function add()
+	{
+		$data=array();
+		
+		$qc = $this->common_model->GetAllWhere("gs_states",array("is_active"=>'Y'));
+		$data['states'] =  $qc->result();
+		
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');	
+		$this->load->view('suburb/add', $data);
+		$this->load->view('common/footer');	
+	}
+
+	public function save()
+	{
+	$data=array();
+	
+	$qc = $this->common_model->GetAllWhere("gs_states",array("is_active"=>'Y'));
+	$data['states'] =  $qc->result();
+	
+	
+		
+	$this->form_validation->set_rules($this->validation_rules['Add']);
+	if($this->form_validation->run())
+	{
+	
+	    $q = $this->common_model->GetAllWhere("gs_suburbs",array("gs_state_id"=>$this->input->post('gs_state_id'),"suburb_name"=>$this->input->post('suburb_name')));
+		
+			if($q->num_rows()>0){
+			
+				$message = '<div class="callout callout-success">Suburb is already added.</p></div>';
+			
+			}
+			else{
+			
+			        $gs_state_id = $this->input->post('gs_state_id');
+					
+					$row['gs_state_id']= $gs_state_id;
+					
+					$row['suburb_postcode']= $this->input->post('suburb_postcode');
+					$row['latitude']= $this->input->post('latitude');
+					$row['longitude']= $this->input->post('longitude');
+					$row['suburb_name']= $this->input->post('suburb_name');
+					$row['is_active']= 'Y' ;
+					$row['create_date']= date('Y-m-d') ;
+					$row['create_user']=  $this->session->userdata('ADMIN_ID') ;
+					$this->common_model->addRecord('gs_suburbs',$row);
+					
+					$message = '<div class="callout callout-success">Suburb has been successfully added.</p></div>';
+			}
+		
+		
+		
+		$this->session->set_flashdata('success', $message);
+		redirect('suburb');
+	}else{
+	
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');					
+		$this->load->view('suburb/add', $data);
+		$this->load->view('common/footer');	
+	 }
+
+	}
+	
+	
+	public function edit()
+	{
+	    $data = array();
+		
+		$qc = $this->common_model->GetAllWhere("gs_states",array("is_active"=>'Y'));
+	    $data['states'] =  $qc->result();
+		
+		$id = $this->uri->segment(3);
+		$where_array = array('gs_suburb_id'=>$id);
+		$state = $this->model->suburb($where_array);	
+		$data['result'] = $state->result();
+		
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');					
+		$this->load->view('suburb/edit', $data);
+		$this->load->view('common/footer');		
+	}
+
+	public function update()
+	{
+	
+		$data = array();
+		$id = $this->input->post('gs_suburb_id');
+		
+		$qc = $this->common_model->GetAllWhere("gs_states",array("is_active"=>'Y'));
+	    $data['states'] =  $qc->result();
+		
+		 $q = $this->common_model->GetAllWhere("gs_suburbs",array("suburb_name"=>$this->input->post('suburb_name'),"gs_state_id"=>$this->input->post('gs_state_id'),"gs_state_id !="=>$this->input->post('gs_state_id')));
+		if($q->num_rows()>0){
+		
+			$message = '<div class="callout callout-success">Suburb is already added.</p></div>';
+		
+		}else{
+		
+		    $gs_state_id = $this->input->post('gs_state_id');
+					
+			$row['gs_state_id']= $gs_state_id;
+			$row['suburb_name']= $this->input->post('suburb_name');
+			$row['suburb_postcode']= $this->input->post('suburb_postcode');
+			$row['latitude']= $this->input->post('latitude');
+			$row['longitude']= $this->input->post('longitude');
+			$row['is_active']= $this->input->post('is_active');
+			$row['update_date']= date('Y-m-d') ;
+			$row['update_user']=  $this->session->userdata('ADMIN_ID') ;
+			$this->db->where('gs_suburb_id', $id);
+			$this->db->update('gs_suburbs', $row); 
+			
+			$message = '<div class="callout callout-success"><p>Suburb updated successfully.</p></div>';
+		}
+		
+		
+		$this->session->set_flashdata('success', $message);
+		redirect('suburb');
+
+	}
+
+	
+
+	public function select_delete()
+	{
+		if(isset($_POST['bulk_delete_submit']))
+		{
+	
+			$idArr = $this->input->post('checked_id');
+			foreach($idArr as $id){
+				$this->db->where('gs_suburb_id',$id);
+				$this->db->delete('gs_suburbs'); 
+			}
+			$message = '<div class="callout callout-success"><p>Suburbs have been deleted successfully.</p></div>';
+			$this->session->set_flashdata('success',$message);
+			redirect('suburb');
+		}
+
+	}
+
+	public function delete_record()
+	{
+
+		$id=$this->uri->segment(3);
+		$this->db->where('gs_suburb_id', $id);
+        $this->db->delete('gs_suburbs'); 
+		$message = '<div class="callout callout-success"><p>Suburb has been deleted successfully.</p></div>';
+		$this->session->set_flashdata('success', $message);
+		redirect('suburb');
+
+	}
+	
+	public function import()
+	{
+		
+		 $data = array();
+		 if($this->input->post()!='')
+			{
+			      
+				  $filename=$_FILES["file"]["tmp_name"];
+				  if($_FILES["file"]["size"] > 0)
+				  {
+						$file = fopen($filename, "r");
+						$count = 0;
+						while (($importdata = fgetcsv($file, 10000, ",")) !== FALSE)
+						/* print_r($importdata);echo count($importdata); exit();*/
+						{
+								if($count>0){
+										$s = $this->common_model->GetAllWhere("gs_suburbs",array("gs_state_name"=>trim($importdata[2]),"gs_suburb_name"=>trim($importdata[1])));
+										if($s->num_rows()<0){
+										
+											$q = $this->common_model->GetAllWhere("gs_states",array("gs_state_name"=>trim($importdata[2])));
+											if($q->num_rows()>0){
+				
+												$rs = $q->result();
+												$gs_state_id = $rs[0]->gs_state_id;
+												
+												$row['gs_state_id']= $gs_state_id;
+												$row['suburb_name']= trim($importdata[1]);
+												$row['latitude']= trim($importdata[3]);
+												$row['longitude']= trim($importdata[4]);
+												$row['suburb_postcode']= trim($importdata[0]);
+												$row['is_active']= 'Y' ;
+												$row['create_date']= date('Y-m-d') ;
+												$row['create_user']=  $this->session->userdata('ADMIN_ID') ;
+												$this->common_model->addRecord('gs_suburbs',$row);
+											
+											}
+											else
+											{
+												 $r = $this->common_model->GetAllWhere("gs_countries",array("gs_country_name"=>trim($importdata[5])));
+												if($r->num_rows()<=0){
+													$data['gs_country_name'] = trim($importdata[5]);
+													$data['create_user']     = $this->session->userdata('ADMIN_ID');
+													$data['is_active']       = 'Y';
+													$data['create_date']     = date('Y-m-d');
+													$gs_country_id = $this->common_model->addRecord('gs_countries',$data);
+													
+													
+													$row1['gs_country_id']= $gs_country_id;
+													$row1['gs_state_name']= trim($importdata[2]);
+													$row1['is_active']= 'Y' ;
+													$row1['create_date']= date('Y-m-d') ;
+													$row1['create_user']=  $this->session->userdata('ADMIN_ID') ;
+													$gs_state_id=$this->common_model->addRecord('gs_states',$row1);
+													
+													$row2['gs_state_id']= $gs_state_id;
+													$row2['suburb_name']= trim($importdata[1]);
+													$row2['latitude']= trim($importdata[3]);
+													$row2['longitude']= trim($importdata[4]);
+													$row2['suburb_postcode']= trim($importdata[0]);
+													$row2['is_active']= 'Y' ;
+													$row2['create_date']= date('Y-m-d') ;
+													$row2['create_user']=  $this->session->userdata('ADMIN_ID') ;
+													$this->common_model->addRecord('gs_suburbs',$row2);
+											
+												}
+												else {
+													
+													$rps = $r->result();
+													$gs_country_id = $rps[0]->gs_country_id;
+													
+													$row3['gs_country_id']= $gs_country_id;
+													$row3['gs_state_name']= trim($importdata[2]);
+													$row3['is_active']= 'Y' ;
+													$row3['create_date']= date('Y-m-d') ;
+													$row3['create_user']=  $this->session->userdata('ADMIN_ID') ;
+													$gs_state_id=$this->common_model->addRecord('gs_states',$row3);
+													
+													$row4['gs_state_id']= $gs_state_id;
+													$row4['suburb_name']= trim($importdata[1]);
+													$row4['latitude']= trim($importdata[3]);
+													$row4['longitude']= trim($importdata[4]);
+													$row4['suburb_postcode']= trim($importdata[0]);
+													$row4['is_active']= 'Y' ;
+													$row4['create_date']= date('Y-m-d') ;
+													$row4['create_user']=  $this->session->userdata('ADMIN_ID') ;
+													$this->common_model->addRecord('gs_suburbs',$row4);
+												}
+													
+											}
+										}
+								}
+						$count++;
+				   }                    
+				   fclose($file);
+				   $message = '<div class="alert alert-success">Data are imported successfully..</p></div>';
+				   $this->session->set_flashdata('success', $message);
+				   redirect('suburb');
+				   }else{
+				   $message = '<div class="alert alert-danger">Something went wrong..</p></div>';
+				   $this->session->set_flashdata('success', $message);
+				   redirect('suburb');
+				   }
+			}
+	}
+
+	
+
+}?>

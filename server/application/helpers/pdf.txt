@@ -1,0 +1,5 @@
+require_once("system/dompdf/dompdf_config.inc.php");
+$dompdf = new DOMPDF();
+				$dompdf->load_html($pdf_html);
+				$dompdf->render();
+				file_put_contents($time.'.pdf', $dompdf->output());

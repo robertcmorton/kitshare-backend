@@ -1,0 +1,2 @@
+[30-Nov-2015 17:01:05 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/goradllc/public_html/system/dompdf/include/autoload.inc.php:94) in /home/goradllc/public_html/system/dompdf/www/head.inc on line 3
+[30-Nov-2015 17:01:12 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/goradllc/public_html/system/dompdf/include/autoload.inc.php:94) in /home/goradllc/public_html/system/dompdf/www/head.inc on line 3

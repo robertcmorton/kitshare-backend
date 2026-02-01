@@ -1,0 +1,481 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+
+
+class App_users extends CI_Controller {
+
+	 public function __construct() {
+
+		parent::__construct();
+
+		$this->load->helper(array('url','form','html','text','common_helper'));
+
+		$this->load->library(array('session','form_validation','pagination','email','upload','image_lib'));
+
+		$this->load->model(array('common_model','mail_model','model'));
+
+		if($this->session->userdata('ADMIN_ID') =='') {
+
+          redirect('login');
+
+		  }
+
+	}
+
+		
+
+		protected $validation_rules = array
+
+        (
+
+		'Add' => array(
+
+			array(
+
+                'field' => 'app_username',
+
+                'label' => 'Username',
+
+                'rules' => 'trim|required|is_unique[gs_users.app_username]'
+
+            ),
+
+			array(
+
+                'field'   => 'password',
+
+                'label'   => 'Password',
+
+                'rules'   => 'trim|required'
+
+            ),
+
+
+
+			array(
+
+                'field'   => 'cnfpwd',
+
+                'label'   => 'Confirm Password',
+
+                'rules'   => 'trim|required|matches[password]'
+
+            )
+
+        ),
+
+    );
+
+	public function index()
+
+	{
+
+	$data=array();
+
+		$where = " ";
+
+		$data['username']				= $this->input->get('username');
+
+				if($data['username'] != ''){
+
+				$where .= "app_username LIKE '%".trim($data['username'])."%' AND ";
+
+			}
+			
+		$data['app_user_first_name']				= $this->input->get('first_name');
+
+				if($data['app_user_first_name'] != ''){
+
+				$where .= "app_user_first_name LIKE '%".trim($data['app_user_first_name'])."%' AND ";
+
+			}
+			
+		$data['app_user_last_name']				= $this->input->get('last_name');
+
+				if($data['app_user_last_name'] != ''){
+
+				$where .= "app_user_last_name LIKE '%".trim($data['app_user_last_name'])."%' AND ";
+
+			}
+
+		$where = substr($where,0,(strlen($where)-4));
+
+
+		/*if($this->input->get("per_page")!= '')
+
+		{
+
+		$offset = $this->input->get("per_page");
+
+		}
+
+		else
+
+		{
+
+			$offset=0;
+
+		}*/
+
+		
+		
+		$where_clause				= '';
+		
+		
+		$total_rows					= $this->model->TotalRecords('gs_users',$where);
+		$qStr 						= http_build_query($_GET); //$_SERVER['QUERY_STRING']
+		$key						= "per_page";
+		parse_str($qStr,$ar);
+		$qrl 						=  http_build_query(array_diff_key($ar,array($key=>"")));
+		$limit 						= 10;
+		$config['base_url'] 		= base_url()."app_users?".$qrl;
+		$config['total_rows'] 		= $total_rows;
+		$config['per_page'] 		= $limit;
+		$config['page_query_string']= TRUE;
+		$config['full_tag_open'] 	= "<ul class='pagination pagination-sm text-center'>";
+		$config['full_tag_close'] 	= "</ul>";
+		$config['num_tag_open'] 	= '<li>';
+		$config['num_tag_close'] 	= '</li>';
+		$config['cur_tag_open'] 	= "<li><li class='active'><a href='#'>";
+		$config['cur_tag_close'] 	= "<span class='sr-only'></span></a></li>";
+		$config['next_tag_open'] 	= "<li>";
+		$config['next_tagl_close'] 	= "</li>";
+		$config['prev_tag_open'] 	= "<li>";
+		$config['prev_tagl_close'] 	= "</li>";
+		$config['first_tag_open'] 	= "<li>";
+		$config['first_tagl_close'] = "</li>";
+		$config['last_tag_open'] 	= "<li>";
+		$config['last_tagl_close'] 	= "</li>";
+		
+		$offset = $this->input->get('per_page');
+		
+		$this->pagination->initialize($config);
+		
+		$data['total_rows'] 	= $total_rows;
+		
+		$data['paginator'] 		= $this->pagination->create_links();
+		
+		$data['app_users']		= $this->model->RetriveRecordByWhereLimit('gs_users',$where,$limit,$offset,'app_user_id','DESC');
+		
+		//print_r($data['app_users']->result()); exit();
+
+//////////////////////////////Pagination config//////////////////////////////////				
+
+
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');	
+		$this->load->view('app_users/list', $data);
+		$this->load->view('common/footer');		
+
+	
+
+	}
+
+	
+
+	public function add()
+	{
+		$data=array();
+		$qc = $this->common_model->GetAllWhere("gs_owner_types",array("is_active"=>'Y'));
+		$data['owner_type_id'] =  $qc->result();
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');	
+		$this->load->view('app_users/add', $data);
+		$this->load->view('common/footer');
+	}
+
+	public function save()
+	{
+
+	$data=array();
+	$qc = $this->common_model->GetAllWhere("gs_owner_types",array("is_active"=>'Y'));
+	$data['owner_type_id'] =  $qc->result();
+
+	$this->form_validation->set_rules($this->validation_rules['Add']);
+
+	if($this->form_validation->run())
+	{
+		
+		$newname= time();
+			$filePath                = PROFILE_PICTURE;
+			$config['upload_path']   = $filePath;
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['file_name']     = $newname;
+			$config['max_size']      = "";
+			$config['max_width']     = "";
+			$config['max_height']    = "";
+			
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+			
+			if (!$this->upload->do_upload('user_profile_picture_link'))
+			{
+			
+				$error = array('error' => $this->upload->display_errors());		
+			}
+			else
+			{	
+				
+				$imgdata = array('upload_data' => $this->upload->data());
+				
+			}
+		
+		
+		$data['app_username'] = $this->input->post('app_username');
+		$data['app_password'] = $this->common_model->base64En(2,trim($this->input->post('password')));
+		$data['primary_email_address'] = $this->input->post('primary_email_address');
+		$data['app_user_first_name'] = $this->input->post('app_user_first_name');
+		$data['app_user_last_name'] = $this->input->post('app_user_last_name');
+		$data['owner_type_id'] = $this->input->post('owner_type_id');
+		$data['user_birth_date'] = $this->input->post('user_birth_date');
+		$data['user_unique_id_number'] = $this->input->post('user_unique_id_number');
+		$data['australian_business_number'] = $this->input->post('australian_business_number');
+		$data['about_me'] = $this->input->post('about_me');
+		$data['primary_mobile_number'] = $this->input->post('primary_mobile_number');
+		$data['additional_mobile_number'] = $this->input->post('additional_mobile_number');
+		$data['additional_email_address_1'] = $this->input->post('additional_email_address_1');	
+		$data['additional_email_address_2'] = $this->input->post('additional_email_address_2');
+		$data['additional_email_address_3'] = $this->input->post('additional_email_address_3');
+		$data['user_profile_picture_link'] = $imgdata['upload_data']['file_name'];
+		$data['user_signup_type'] = $this->input->post('user_signup_type');
+		$data['user_account_type'] = $this->input->post('user_account_type');
+		$data['user_social_id'] = $this->input->post('user_social_id');
+		$data['user_website'] = $this->input->post('user_website');
+		$data['imdb_link'] = $this->input->post('imdb_link');
+		$data['showreel_link'] = $this->input->post('showreel_link');
+		$data['instagram_link'] = $this->input->post('instagram_link');
+		$data['facebook_link'] = $this->input->post('facebook_link');
+		$data['vimeo_link'] = $this->input->post('vimeo_link');
+		$data['youtube_link'] = $this->input->post('youtube_link');
+		$data['flikr_link'] = $this->input->post('flikr_link');
+		$data['twitter_link'] = $this->input->post('twitter_link');
+		$data['linkedin_link'] = $this->input->post('linkedin_link');
+		$data['receive_sms_notification'] = $this->input->post('receive_sms_notification');
+		$data['enable_weekly_rate'] = $this->input->post('enable_weekly_rate');
+		$data['enable_weekend_rate'] = $this->input->post('enable_weekend_rate');
+		$data['is_willing_deliver'] = $this->input->post('is_willing_deliver');
+		$data['is_prep_space_available'] = $this->input->post('is_prep_space_available');
+		$data['is_active'] = $this->input->post('is_active');
+		$data['is_blocked'] = $this->input->post('is_blocked');
+		$data['block_reason'] = $this->input->post('block_reason');
+		if($this->input->post('is_blocked')=='Y'){
+			$data['blocked_on'] = date('Y-m-d');
+			$data['blocked_by_user_id'] = $this->session->userdata('ADMIN_ID');
+		}
+		$data['create_user'] = $this->session->userdata('ADMIN_ID');
+		$data['create_date'] = date('Y-m-d');
+		
+		$this->common_model->addRecord('gs_users',$data);
+		$message = '<div class="callout callout-success">User has been successfully added.</p></div>';
+		$this->session->set_flashdata('success', $message);
+
+	    redirect('app_users');
+
+	 }else{
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');					
+		$this->load->view('app_users/add', $data);
+		$this->load->view('common/footer');	
+
+	  }
+
+	}
+
+	
+
+	public function edit()
+	{
+
+	    $data = array();
+		$id = $this->uri->segment(3);
+		$qc = $this->common_model->GetAllWhere("gs_owner_types",array("is_active"=>'Y'));
+		$data['owner_type_id'] =  $qc->result();
+		$where_array = array('app_user_id'=>$id);
+		$data['user']= $this->common_model->get_all_record('gs_users',$where_array);	
+	
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');					
+		$this->load->view('app_users/edit', $data);
+		$this->load->view('common/footer');		
+
+	}
+
+	public function update()
+	{
+
+		$data = array();
+		$app_user_id= $this->input->post('app_user_id');
+		
+		if($this->input->post('user_profile_picture_link')!=NULL){
+			$newname= time();
+			$filePath                = PROFILE_PICTURE;
+			$config['upload_path']   = $filePath;
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['file_name']     = $newname;
+			$config['max_size']      = "";
+			$config['max_width']     = "";
+			$config['max_height']    = "";
+			
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+			
+			if (!$this->upload->do_upload('user_profile_picture_link'))
+			{
+			
+				$error = array('error' => $this->upload->display_errors());		
+			}
+			else
+			{	
+				
+				$imgdata = array('upload_data' => $this->upload->data());
+				
+			}
+	
+	
+		if(!empty($imgdata))
+		{
+			$where_array = array('app_user_id'=>$id);
+			$image= $this->common_model->get_all_record('gs_users',$where_array);
+			foreach($image as $img){
+				$this->load->helper("file");
+				$oldfile = GEAR_IMAGE."/".$img->model_image ; 
+				unlink($oldfile);
+			}
+			$data['user_profile_picture_link'] = $imgdata['upload_data']['file_name'];
+		}
+			
+		$data['user_profile_picture_link'] = $imgdata['upload_data']['file_name'];
+		}
+		
+		
+		$data['app_username'] = $this->input->post('app_username');
+		$data['app_password'] = $this->common_model->base64En(2,trim($this->input->post('password')));
+		$data['primary_email_address'] = $this->input->post('primary_email_address');
+		$data['app_user_first_name'] = $this->input->post('app_user_first_name');
+		$data['app_user_last_name'] = $this->input->post('app_user_last_name');
+		$data['owner_type_id'] = $this->input->post('owner_type_id');
+		$data['user_birth_date'] = $this->input->post('user_birth_date');
+		$data['user_unique_id_number'] = $this->input->post('user_unique_id_number');
+		$data['australian_business_number'] = $this->input->post('australian_business_number');
+		$data['about_me'] = $this->input->post('about_me');
+		$data['primary_mobile_number'] = $this->input->post('primary_mobile_number');
+		$data['additional_mobile_number'] = $this->input->post('additional_mobile_number');
+		$data['additional_email_address_1'] = $this->input->post('additional_email_address_1');	
+		$data['additional_email_address_2'] = $this->input->post('additional_email_address_2');
+		$data['additional_email_address_3'] = $this->input->post('additional_email_address_3');
+		$data['user_signup_type'] = $this->input->post('user_signup_type');
+		$data['user_account_type'] = $this->input->post('user_account_type');
+		$data['user_social_id'] = $this->input->post('user_social_id');
+		$data['user_website'] = $this->input->post('user_website');
+		$data['imdb_link'] = $this->input->post('imdb_link');
+		$data['showreel_link'] = $this->input->post('showreel_link');
+		$data['instagram_link'] = $this->input->post('instagram_link');
+		$data['facebook_link'] = $this->input->post('facebook_link');
+		$data['vimeo_link'] = $this->input->post('vimeo_link');
+		$data['youtube_link'] = $this->input->post('youtube_link');
+		$data['flikr_link'] = $this->input->post('flikr_link');
+		$data['twitter_link'] = $this->input->post('twitter_link');
+		$data['linkedin_link'] = $this->input->post('linkedin_link');
+		$data['receive_sms_notification'] = $this->input->post('receive_sms_notification');
+		$data['enable_weekly_rate'] = $this->input->post('enable_weekly_rate');
+		$data['enable_weekend_rate'] = $this->input->post('enable_weekend_rate');
+		$data['is_willing_deliver'] = $this->input->post('is_willing_deliver');
+		$data['is_prep_space_available'] = $this->input->post('is_prep_space_available');
+		$data['is_active'] = $this->input->post('is_active');
+		$data['is_blocked'] = $this->input->post('is_blocked');
+		$data['block_reason'] = $this->input->post('block_reason');
+		if($this->input->post('is_blocked')=='Y'){
+			$data['blocked_on'] = date('Y-m-d');
+			$data['blocked_by_user_id'] = $this->session->userdata('ADMIN_ID');
+		}
+		$data['update_user'] = $this->session->userdata('ADMIN_ID');
+		$data['update_date'] = date('Y-m-d');
+		$this->db->where('app_user_id', $app_user_id);
+		$this->db->update('gs_users', $data); 
+		$message = '<div class="callout callout-success">User has been successfully updated.</p></div>';
+		$this->session->set_flashdata('success', $message);
+		redirect('app_users');
+
+	}
+
+	public function view()
+	{
+
+	   $data = array();
+		$id = $this->uri->segment(3);
+		$where_array = array('app_user_id'=>$id);
+		$data['user']= $this->common_model->get_all_record('gs_users',$where_array);	
+	
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');					
+		$this->load->view('app_users/view', $data);
+		$this->load->view('common/footer');		
+
+	}
+
+	public function select_delete()
+	{
+		if(isset($_POST['bulk_delete_submit']))
+		{
+	
+			$idArr = $this->input->post('checked_id');
+			foreach($idArr as $id){
+				$this->db->where('app_user_id', $id);
+				$this->db->delete('gs_users');    
+	
+			}
+	
+			$message = '<div class="callout callout-success"><p>Users have been deleted successfully.</p></div>';
+			$this->session->set_flashdata('success', $message);
+			redirect('app_users');
+	
+		 }
+
+	}
+
+	public function delete_record()
+	{
+
+		$id=$this->uri->segment(3);
+		$this->db->where('app_user_id', $id);
+		$this->db->delete('gs_users'); 
+		$message = '<div class="callout callout-success"><p>User has been deleted successfully.</p></div>';
+		$this->session->set_flashdata('success', $message);
+		redirect('app_users');
+
+	}
+
+	
+	public function username_check()
+	{
+	 
+	 $username = $this->input->post('app_username');
+	 $username_exist = $this->model->checkAppUserAd($username);
+		
+		if($username_exist->num_rows() > 0 ){
+            echo 'false';
+        } else {
+            echo 'true';
+        }
+	 
+	 }
+	 
+	 
+	 public function username_check_edit(){
+	 
+	 
+		$username = $this->input->post('app_username');
+		$id = $this->uri->segment(3); 
+		$username_exist = $this->model->checkAppUserEdit($username,$id);
+			
+			if($username_exist->num_rows() > 0 ){
+				echo 'false';
+			} else {
+				echo 'true';
+			}
+	 
+	 
+	 
+	 }
+
+}?>

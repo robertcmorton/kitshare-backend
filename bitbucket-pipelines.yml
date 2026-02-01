@@ -1,0 +1,13 @@
+pipelines:
+  branches:
+    master:
+      - step:
+          script:
+            - apt-get update && apt-get install rsync -y
+            - rsync -r -v -e ssh * kitshare_main@35.201.7.47:/var/www/vhosts/kitshare.com.au/httpdocs/backend --exclude '*.yml' --exclude="server/uploads/*" --exclude="server/site_upload/*" --exclude="server/application/cache/*" --exclude="site_upload/*" --exclude="admin/uploads/*" --exclude="admin/application/cache/*" --exclude="server/config.php" --exclude="server/application/config/*" --exclude="admin/application/config/*"
+    development:
+      - step:
+          script:
+            - apt-get update && apt-get install rsync -y
+            - ssh -i ~/.ssh/config kitshare_main@35.189.57.196 'sudo setfacl -R -m u:kitshare_main:rwx /var/www/html/kitshare/public/backend'
+            - rsync -r -v -e ssh * kitshare_main@35.189.57.196:/var/www/html/kitshare/public/backend --exclude '*.yml' --exclude="server/uploads/*" --exclude="server/site_upload/*" --exclude="server/application/cache/*" --exclude="site_upload/*" --exclude="admin/uploads/*" --exclude="admin/application/cache/*" --exclude="server/config.php" --exclude="server/application/config/*" --exclude="admin/application/config/*"

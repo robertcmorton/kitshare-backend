@@ -1,0 +1,335 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class State extends CI_Controller {
+	 public function __construct() {
+		parent::__construct();
+		$this->load->helper(array('url','form','html','text'));
+		$this->load->library(array('session','form_validation','pagination','email'));
+		$this->load->model(array('common_model','mail_model','model'));
+		if($this->session->userdata('ADMIN_ID') =='') {
+          redirect('login');
+		  }
+		 error_reporting(0);
+	}
+
+	protected $validation_rules = array
+        (
+		'Add' => array(
+			array(
+                'field' => 'gs_state_name',
+                'label' => 'state name',
+                'rules' => 'trim|required'
+            ),
+			array(
+                'field' => 'gs_country_id',
+                'label' => 'country name',
+                'rules' => 'trim|required'
+            ),
+
+        ),
+
+    );
+
+	public function index()
+	{
+		$data=array();
+		//$where = ' ';
+		$limit=10;
+		$data['gs_state_name']				= $this->input->get('gs_state_name');
+		if($data['gs_state_name'] != ''){
+			$where .= "a.gs_state_name LIKE '%".trim($data['gs_state_name'])."%' and ";
+		}
+		
+		$data['gs_country_name']				= $this->input->get('gs_country_name');
+				if($data['gs_country_name'] != ''){
+				$where .= "b.gs_country_name LIKE '%".trim($data['gs_country_name'])."%' and ";
+			}
+			
+		$where = substr($where, 0, -4);
+		
+		if($this->input->get("per_page")!= '')
+		{
+		$offset = $this->input->get("per_page");
+		}
+		else
+		{
+			$offset=0;
+		}
+		
+		$nUser=$this->model->state($where);
+		$sql=$this->model->state($where,$limit,$offset);
+		
+		$state=$sql->result();
+	
+		$total_rows=$nUser->num_rows();	
+		$data['state'] = $state;
+		$data['total_rows']=$total_rows;
+		$data['limit']=$limit;
+		$config['base_url'] = base_url()."state/index/?gs_state_name=".$data['gs_state_name']."";
+		$config['total_rows'] = $total_rows;
+		$config['per_page'] = $limit;
+		$config['page_query_string'] = TRUE;
+	    $config['full_tag_open'] = "<ul class='pagination pagination-sm text-center'>";
+		$config['full_tag_close'] = "</ul>";
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = "<li><li class='active'><a href='#'>";
+		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+		$config['next_tag_open'] = "<li>";
+		$config['next_tagl_close'] = "</li>";
+		$config['prev_tag_open'] = "<li>";
+		$config['prev_tagl_close'] = "</li>";
+		$config['first_tag_open'] = "<li>";
+		$config['first_tagl_close'] = "</li>";
+		$config['last_tag_open'] = "<li>";
+		$config['last_tagl_close'] = "</li>";
+		$this->pagination->initialize($config);
+		$paginator = $this->pagination->create_links();
+		
+		//echo $this->db->last_query();
+		//print_r($data['state']); exit();
+		
+		
+//////////////////////////////Pagination config//////////////////////////////////				
+		$data['paginator'] = $paginator;
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');	
+		$this->load->view('state/list', $data);
+		$this->load->view('common/footer');		
+
+	}
+
+	public function add()
+	{
+		$data=array();
+		
+		$qc = $this->common_model->GetAllWhere("gs_countries",array("is_active"=>'Y'));
+		$data['countries'] =  $qc->result();
+		
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');	
+		$this->load->view('state/add', $data);
+		$this->load->view('common/footer');	
+	}
+
+	public function save()
+	{
+	$data=array();
+	
+	$qc = $this->common_model->GetAllWhere("gs_countries",array("is_active"=>'Y'));
+	$data['countries'] =  $qc->result();
+	
+	
+		
+	$this->form_validation->set_rules($this->validation_rules['Add']);
+	if($this->form_validation->run())
+	{
+	
+	    $q = $this->common_model->GetAllWhere("gs_states",array("gs_country_id"=>$this->input->post('gs_country_id'),"gs_state_name"=>$this->input->post('gs_state_name')));
+		
+			if($q->num_rows()>0){
+			
+				$message = '<div class="callout callout-success">State is already added.</p></div>';
+			
+			}
+			else{
+			
+			        $gs_country_id = $this->input->post('gs_country_id');
+					
+					if($this->input->post('gs_country_name')!=''){
+					
+							$row1['gs_country_name']= $this->input->post('gs_country_name');
+							$row1['create_user'] = $this->session->userdata('ADMIN_ID');
+							$row1['is_active'] = 'Y';
+							$row1['create_date'] = date('Y-m-d');
+							$gs_country_id = $this->common_model->addRecord('gs_countries',$row1);
+					
+					}
+			       
+					$row['gs_country_id']= $gs_country_id;
+					$row['gs_state_name']= $this->input->post('gs_state_name');
+					$row['is_active']= 'Y' ;
+					$row['create_date']= date('Y-m-d') ;
+					$row['create_user']=  $this->session->userdata('ADMIN_ID') ;
+					$this->common_model->addRecord('gs_states',$row);
+					
+					$message = '<div class="callout callout-success">States has been successfully added.</p></div>';
+			}
+		
+		
+		
+		$this->session->set_flashdata('success', $message);
+		redirect('state');
+	}else{
+	
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');					
+		$this->load->view('state/add', $data);
+		$this->load->view('common/footer');	
+	 }
+
+	}
+	
+	
+	public function edit()
+	{
+	    $data = array();
+		
+		$qc = $this->common_model->GetAllWhere("gs_countries",array("is_active"=>'Y'));
+	    $data['countries'] =  $qc->result();
+		
+		$id = $this->uri->segment(3);
+		$where_array = array('gs_state_id'=>$id);
+		$state = $this->model->state($where_array);	
+		$data['result'] = $state->result();
+		
+		$this->load->view('common/header');	
+		$this->load->view('common/left-menu');					
+		$this->load->view('state/edit', $data);
+		$this->load->view('common/footer');		
+	}
+
+	public function update()
+	{
+	
+		$data = array();
+		$id = $this->input->post('gs_state_id');
+		
+		$qc = $this->common_model->GetAllWhere("gs_countries",array("is_active"=>'Y'));
+	    $data['countries'] =  $qc->result();
+		
+		 $q = $this->common_model->GetAllWhere("gs_states",array("gs_state_name"=>$this->input->post('gs_state_name'),"gs_country_id"=>$this->input->post('gs_country_id'),"gs_state_id !="=>$this->input->post('gs_state_id')));
+		if($q->num_rows()>0){
+		
+			$message = '<div class="callout callout-success">State is already added.</p></div>';
+		
+		}else{
+		
+		    $gs_country_id = $this->input->post('gs_country_id');
+					
+			if($this->input->post('gs_country_name')!=''){
+			
+					$row1['gs_country_name']= $this->input->post('gs_country_name');
+					$row1['create_user'] = $this->session->userdata('ADMIN_ID');
+					$row1['is_active'] = 'Y';
+					$row1['create_date'] = date('Y-m-d');
+					$gs_country_id = $this->common_model->addRecord('gs_countries',$row1);
+			
+			}
+		
+			$row['gs_country_id']= $gs_country_id;
+			$row['gs_state_name']= $this->input->post('gs_state_name');
+			$row['is_active']= $this->input->post('is_active');
+			$row['update_date']= date('Y-m-d') ;
+			$row['update_user']=  $this->session->userdata('ADMIN_ID') ;
+			$this->db->where('gs_state_id', $id);
+			$this->db->update('gs_states', $row); 
+			
+			$message = '<div class="callout callout-success"><p>State updated successfully.</p></div>';
+		}
+		
+		
+		$this->session->set_flashdata('success', $message);
+		redirect('state');
+
+	}
+
+	
+
+	public function select_delete()
+	{
+		if(isset($_POST['bulk_delete_submit']))
+		{
+	
+			$idArr = $this->input->post('checked_id');
+			foreach($idArr as $id){
+				$this->db->where('gs_state_id',$id);
+				$this->db->delete('gs_states'); 
+			}
+			$message = '<div class="callout callout-success"><p>State have been deleted successfully.</p></div>';
+			$this->session->set_flashdata('success',$message);
+			redirect('state');
+		}
+
+	}
+
+	public function delete_record()
+	{
+
+		$id=$this->uri->segment(3);
+		$this->db->where('gs_state_id', $id);
+        $this->db->delete('gs_states'); 
+		$message = '<div class="callout callout-success"><p>State has been deleted successfully.</p></div>';
+		$this->session->set_flashdata('success', $message);
+		redirect('state');
+
+	}
+	
+	public function import()
+	{
+		 $data = array();
+		 if($this->input->post()!='')
+			{
+			      
+				  $filename=$_FILES["file"]["tmp_name"];
+				  if($_FILES["file"]["size"] > 0)
+				  {
+						$file = fopen($filename, "r");
+						$count = 0;
+						while (($importdata = fgetcsv($file, 10000, ",")) !== FALSE)
+						/* print_r($importdata);echo count($importdata); exit();*/
+						{
+								if($count>0){
+										
+								        $q = $this->common_model->GetAllWhere("gs_countries",array("gs_country_name"=>trim($importdata[1])));
+										if($q->num_rows()>0){
+			
+											$rs = $q->result();
+											$gs_country_id = $rs[0]->gs_country_id;
+											
+											$row['gs_country_id']= $gs_country_id;
+											$row['gs_state_name']= trim($importdata[0]);
+											$row['is_active']= 'Y' ;
+											$row['create_date']= date('Y-m-d') ;
+											$row['create_user']=  $this->session->userdata('ADMIN_ID') ;
+											$this->common_model->addRecord('gs_states',$row);
+										
+										}
+										else
+										{
+										
+											$data['gs_country_name'] = trim($importdata[0]);
+											$data['create_user']     = $this->session->userdata('ADMIN_ID');
+											$data['is_active']       = 'Y';
+											$data['create_date']     = date('Y-m-d');
+											$gs_country_id = $this->common_model->addRecord('gs_countries',$data);
+											
+											
+											$row['gs_country_id']= $gs_country_id;
+											$row['gs_state_name']= trim($importdata[2]);
+											$row['is_active']= 'Y' ;
+											$row['create_date']= date('Y-m-d') ;
+											$row['create_user']=  $this->session->userdata('ADMIN_ID') ;
+											$this->common_model->addRecord('gs_states',$row);
+										
+										
+										}
+								
+								}
+						$count++;
+				   }                    
+				   fclose($file);
+				   $message = '<div class="alert alert-success">Data are imported successfully..</p></div>';
+				   $this->session->set_flashdata('success', $message);
+				   redirect('state');
+				   }else{
+				   $message = '<div class="alert alert-danger">Something went wrong..</p></div>';
+				   $this->session->set_flashdata('success', $message);
+				   redirect('state');
+				   }
+			}
+	}
+
+	
+
+}?>
