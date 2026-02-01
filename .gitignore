@@ -1,1 +1,12 @@
 server/application/config/
+server/application/third_party/braintree_php/lib/.DS_Store
+server/application/third_party/braintree_php/.DS_Store
+server/application/third_party/braintree-php/lib/.DS_Store
+server/application/third_party/braintree-php/.DS_Store
+server/application/third_party/.DS_Store
+server/application/.DS_Store
+server/.DS_Store
+assets/.DS_Store
+admin/application/.DS_Store
+admin/.DS_Store
+.DS_Store
